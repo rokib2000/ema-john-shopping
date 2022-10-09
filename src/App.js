@@ -3,8 +3,9 @@ import "./App.css";
 import Orders from "./components/Orders/Orders";
 import Shop from "./components/Shop/Shop";
 import Main from "./layouts/Main";
-import Inventory from './components/Inventory/Inventory'
-import About from './components/About/About'
+import Inventory from './components/Inventory/Inventory';
+import About from './components/About/About';
+import {productsAndCartLoader} from './loaders/productsAndCartLoader'
 
 
 function App() {
@@ -15,14 +16,12 @@ function App() {
       children: [
         {
           path: '/',
-          element: <Shop></Shop>
-        },
-        {
-          path: '/shop',
+          loader: () => fetch('products.json'),
           element: <Shop></Shop>
         },
         {
           path: '/orders',
+          loader: productsAndCartLoader,
           element: <Orders></Orders>
         },
         {
