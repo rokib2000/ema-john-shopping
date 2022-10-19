@@ -53,7 +53,7 @@ const UserContext = ({ children }) => {
     return () => {
       unsubscribe();
     };
-  });
+  }, []);
 
   const authInfo = { user, createUser, logInUser, logOutUser, googleSignIn, loading };
 
