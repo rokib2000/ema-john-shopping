@@ -29,6 +29,7 @@ const Register = () => {
     createUser(email, password)
       .then((result) => {
         toast.info("Account Create Successfully");
+        form.reset();
       })
       .catch((error) => {
         toast(error.message);

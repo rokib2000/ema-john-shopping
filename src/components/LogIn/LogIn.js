@@ -1,12 +1,14 @@
-import { faArrowRightLong } from "@fortawesome/free-solid-svg-icons";
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { AuthContext } from "../../contexts/UserContext";
 import "./LogIn.css";
 
 const LogIn = () => {
   const { logInUser, googleSignIn } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,6 +22,8 @@ const LogIn = () => {
     logInUser(email, password)
       .then((result) => {
         toast.info("LogIn Successfully");
+        navigate(from, { replace: true });
+        form.reset();
       })
       .catch((error) => {
         toast.error(error.message);
@@ -31,6 +35,7 @@ const LogIn = () => {
     googleSignIn()
       .then((result) => {
         toast.info("LogIn Successfully");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         toast.error(error.message);

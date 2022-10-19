@@ -22,25 +22,25 @@ const UserContext = ({ children }) => {
 
   // create User
   const createUser = (email, password) => {
-    // setLoading(true);
+    setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
   // User login
   const logInUser = (email, password) => {
-    // setLoading(true);
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
   // User Logout
   const logOutUser = () => {
-    // setLoading(true);
+    setLoading(true);
     return signOut(auth);
   };
 
   // Google signIn
   const googleSignIn = () => {
-    // setLoading(true);
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
